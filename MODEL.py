@@ -343,21 +343,3 @@ if __name__ == '__main__':
             print(f"No images found in the directory: {test_images_path}")
 
 
-#lส่วนของการบันทึกโมเดลเป็นไฟล์ .pt
-import os
-import torch
-from ultralytics import YOLO
-
-# Load your trained YOLO model
-Valid_model = YOLO('D:\\MODEL_AI\\runs\\detect\\train\\weights\\best.pt')
-
-# Define the directory where you want to save the model
-save_dir = 'D:\\MODEL_AI\\pt_model'
-
-# Check if the directory exists, if not create it
-if not os.path.exists(save_dir):
-    os.makedirs(save_dir)
-
-# Save the model's state_dict as a .pt file
-torch.save(Valid_model.model.state_dict(), os.path.join(save_dir, 'model.pt'))
-print(f"Model saved to {os.path.join(save_dir, 'model.pt')}")
